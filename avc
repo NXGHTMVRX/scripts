@@ -1,0 +1,13 @@
+#!/bin/sh
+#Alsa Volume Control. [s]tatus/[t]oggle/[m]ute/[u]p/[d]own
+msgID="991049"
+VOL="${2:-5}"
+DEF="${1:-s}"
+
+case "$DEF" in
+s) dunstify -r "$msgID" "$(amixer set Master 0%+ | tail +5 | awk '{print $4}' | sed 's/[^0-9]*//g')" ;;
+t) dunstify -r "$msgID" "$(amixer set Master toggle | tail +5 | awk '{printf $6}' | sed 's/[^a-z]*//g')" ;;
+m) amixer set Master mute ;;
+u) dunstify -r "$msgID" "$(amixer set Master "$VOL"%+ | tail +5 | awk '{print $4}' | sed 's/[^0-9]*//g')" ;;
+d) dunstify -r "$msgID" "$(amixer set Master "$VOL"%- | tail +5 | awk '{print $4}' | sed 's/[^0-9]*//g')" ;;
+esac

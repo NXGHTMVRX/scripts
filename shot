@@ -1,0 +1,8 @@
+#!/bin/sh
+
+ffmpeg -y \
+    -f x11grab \
+    -video_size 1920x1080 \
+    -i :0.0 \
+    -vframes 1 \
+    "shot.jpg" 2>/dev/null

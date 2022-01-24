@@ -1,0 +1,6 @@
+#!/bin/sh
+grub-install /dev/sdb
+grub-mkconfig -o /boot/grub/grub.conf
+
+#mount /dev/sda2 /mnt
+#mount /dev/sda1 /mnt/boot/efi

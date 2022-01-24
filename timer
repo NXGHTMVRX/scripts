@@ -1,0 +1,10 @@
+#!/bin/sh
+msgID="991048"
+TMR="${1:-60m}"
+
+date
+while [ 1 ]; do
+count=$((count+1))
+sleep $TMR
+dunstify -r "$msgID" "$count $($1|sed 's/[^a-z]*//g') passed" $(date | awk '{print $4}')
+done

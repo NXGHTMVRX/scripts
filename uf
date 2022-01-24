@@ -1,0 +1,3 @@
+#!/bin/sh
+#Upload File
+curl -Ffile=@$1 https://0x0.st
